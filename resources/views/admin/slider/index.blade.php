@@ -69,7 +69,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $sliders->links() }}
+                        {{ $sliders->links("pagination::bootstrap-4") }}
                     </div>
                 </div>
             </div>

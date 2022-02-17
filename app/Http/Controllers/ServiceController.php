@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     public function index() {
 
-        $services = Services::latest()->paginate();
+        $services = Services::latest()->paginate(5);
 
         return view('admin.service.index',compact('services'));
     }
@@ -42,7 +42,7 @@ class ServiceController extends Controller
            'created_at' => Carbon::now()
         ]);
 
-        return redirect()->route('services.all')->with('success','Service added successfully.');
+        return redirect()->route('services.all')->with(['alert-type'=>'success','message'=>'Service added successfully.']);
     }
 
     public function updateService(Request $request, $id) {
@@ -60,13 +60,13 @@ class ServiceController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return redirect()->route('services.all')->with('success','Service updated successfully.');
+        return redirect()->route('services.all')->with(['alert-type'=>'success','message'=>'Service updated successfully.']);
     }
 
     public function deleteService($id) {
 
         Services::find($id)->delete();
 
-        return redirect()->back()->with('success','Service deleted successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Service deleted successfully.']);
     }
 }

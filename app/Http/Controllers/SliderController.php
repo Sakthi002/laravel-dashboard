@@ -49,7 +49,7 @@ class SliderController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return redirect()->route('slider.all')->with('success','Slide created successfully.');
+        return redirect()->route('slider.all')->with(['alert-type'=>'success','message'=>'Slide created successfully.']);
     }
 
     public function edit($id) {
@@ -92,7 +92,7 @@ class SliderController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success','Slide updated successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Slide updated successfully.']);
     }
 
     public function getNewImg(Request $request): ?string
@@ -117,6 +117,6 @@ class SliderController extends Controller
 
         Slider::find($id)->delete();
 
-        return redirect()->back()->with('success','Slide deleted successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Slide deleted successfully.']);
     }
 }

@@ -63,7 +63,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $brands->links() }}
+                        {{ $brands->links("pagination::bootstrap-4") }}
                     </div>
                 </div>
             </div>

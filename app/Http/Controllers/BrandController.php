@@ -41,7 +41,7 @@ class BrandController extends Controller
         $brand['brand_image'] = $last_img;
         $brand->save();
 
-        return redirect()->back()->with('success','Brand added successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Brand added successfully.']);
     }
 
     public function edit($id) {
@@ -82,7 +82,7 @@ class BrandController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success','Brand updated successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Brand updated successfully.']);
     }
 
     /**
@@ -119,7 +119,7 @@ class BrandController extends Controller
 
         Brand::find($id)->delete();
 
-        return redirect()->back()->with('success','Brand deleted successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Brand deleted successfully.']);
     }
 
     public function multiImage() {
@@ -149,13 +149,13 @@ class BrandController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success','Images uploaded successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Images uploaded successfully.']);
     }
 
     public function logOut() {
 
         Auth::logout();
 
-        return redirect()->route('login')->with('success','User logout successfully.');
+        return redirect()->route('login')->with(['alert-type'=>'success','message'=>'User logout successfully.']);
     }
 }

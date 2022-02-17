@@ -48,7 +48,7 @@ class ClientController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return redirect()->back()->with('success','Form submitted successfully');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Form submitted successfully']);
     }
 
 }

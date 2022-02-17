@@ -33,7 +33,7 @@ class ContactController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return redirect()->route('contacts.admin')->with('success','Contact Profile added successfully');
+        return redirect()->route('contacts.admin')->with(['alert-type'=>'success','message'=>'Contact Profile added successfully']);
     }
 
     public function edit($id) {
@@ -58,14 +58,14 @@ class ContactController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return redirect()->route('contacts.admin')->with('success','Contact Profile updated successfully');
+        return redirect()->route('contacts.admin')->with(['alert-type'=>'success','message'=>'Contact Profile updated successfully']);
     }
 
     public function deleteContact($id) {
 
         Contact::find($id)->delete();
 
-        return redirect()->back()->with('success','Contact Profile deleted successfully');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Contact Profile deleted successfully']);
     }
 
     public function contactMessages() {
@@ -79,7 +79,7 @@ class ContactController extends Controller
 
         ContactForm::find($id)->delete();
 
-        return redirect()->back()->with('success','Contact Message deleted successfully');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Contact Message deleted successfully']);
 
     }
 

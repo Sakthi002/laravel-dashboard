@@ -61,21 +61,6 @@
                     </div>
                 </div>
 
-                @if(session('success'))
-
-                    <div class="col-sm-12 mt-3">
-
-                        <div class="alert alert-dismissible fade show alert-success" role="alert">
-
-                            <strong>Success!</strong> {{ session('success') }}
-
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                    </div>
-                @endif
-
                 <div class="card-body p-5">
 
                     <h4 class="text-dark mb-5">Sign In</h4>
@@ -85,9 +70,15 @@
                             <div class="form-group col-md-12 mb-4">
                                 <input type="email" class="form-control input-lg" id="email" aria-describedby="emailHelp" placeholder="Email"
                                     name="email">
+                                @error('email')
+                                <span class="mt-2 d-block text-danger">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="form-group col-md-12 ">
                                 <input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password">
+                                @error('password')
+                                <span class="mt-2 d-block text-danger">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-md-12">
                                 <div class="d-flex my-2 justify-content-between">

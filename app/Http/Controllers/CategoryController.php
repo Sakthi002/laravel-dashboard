@@ -73,7 +73,7 @@ class CategoryController extends Controller
             //DB::table('categories')->insert($data);
         //================================================================
 
-        return redirect()->back()->with('success','Category added successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Category added successfully.']);
     }
 
     public function edit($id) {
@@ -112,27 +112,27 @@ class CategoryController extends Controller
 
         DB::table('categories')->where('id',$id)->update($data);
 
-        return redirect()->route('category.all')->with('success','Category updated successfully.');
+        return redirect()->route('category.all')->with(['alert-type'=>'success','message'=>'Category updated successfully.']);
     }
 
     public function moveToTrash($id) {
 
         Category::find($id)->delete();
 
-        return redirect()->back()->with('success','Category moved to trash successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Category moved to trash successfully.']);
     }
 
     public function restoreCategory($id) {
 
         Category::withTrashed()->find($id)->restore();
 
-        return redirect()->back()->with('success','Category restored successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Category restored successfully.']);
     }
 
     public function deleteCategory($id) {
 
         Category::onlyTrashed()->find($id)->forceDelete();
 
-        return redirect()->back()->with('success','Category deleted successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'Category deleted successfully.']);
     }
 }

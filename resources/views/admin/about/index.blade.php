@@ -69,7 +69,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $about_list->links() }}
+                        {{ $about_list->links("pagination::bootstrap-4") }}
                     </div>
                 </div>
             </div>

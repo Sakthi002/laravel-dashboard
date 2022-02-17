@@ -57,21 +57,6 @@
             <div class="row mt-5 justify-content-center" data-aos="fade-up">
                 <div class="col-lg-10">
 
-                    @if(session('success'))
-
-                        <div>
-
-                            <div class="alert alert-dismissible fade show alert-success" role="alert">
-
-                                <strong>Success!</strong> {{ session('success') }}
-
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                        </div>
-                    @endif
-
                     <form action="{{ url('/client/contact/form') }}" method="POST" role="form" class="php-mail-form">
                         @csrf
                         <div class="form-row">

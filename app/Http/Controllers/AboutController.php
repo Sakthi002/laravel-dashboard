@@ -44,7 +44,7 @@ class AboutController extends Controller
 
         $about->save();
 
-        return redirect()->route('about.all')->with('success','About added successfully.');
+        return redirect()->route('about.all')->with(['alert-type'=>'success','message'=>'About added successfully.']);
     }
 
     public function updateAbout(Request $request, $id) {
@@ -62,13 +62,13 @@ class AboutController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return redirect()->route('about.all')->with('success','About updated successfully.');
+        return redirect()->route('about.all')->with(['alert-type'=>'success','message'=>'About updated successfully.']);
     }
 
     public function deleteAbout($id) {
 
         About::find($id)->delete();
 
-        return redirect()->back()->with('success','About deleted successfully.');
+        return redirect()->back()->with(['alert-type'=>'success','message'=>'About deleted successfully.']);
     }
 }

@@ -34,10 +34,10 @@ class ProfileController extends Controller
 
             Auth::logout();
 
-            return redirect()->route('login')->with('success','Password updated successfully');
+            return redirect()->route('login')->with(['alert-type'=>'success','message'=>'Password updated successfully']);
         } else {
 
-            return redirect()->back()->with('error','Current Password is not valid');
+            return redirect()->back()->with(['alert-type'=>'error','message'=>'Current Password is not valid']);
         }
     }
 
@@ -84,11 +84,11 @@ class ProfileController extends Controller
 
             $user->save();
 
-            return redirect()->back()->with('success','Profile updated successfully');
+            return redirect()->back()->with(['alert-type'=>'success','message'=>'Profile updated successfully']);
 
         } else {
 
-            return redirect()->back()->with('error','User not found');
+            return redirect()->back()->with(['alert-type'=>'error','message'=>'User not found']);
         }
     }
 }

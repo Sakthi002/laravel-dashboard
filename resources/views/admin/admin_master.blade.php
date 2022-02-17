@@ -21,6 +21,9 @@
     <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css') }}" />
     <!-- FAVICON -->
     <link href="{{ asset('backend/assets/img/favicon.png') }}" rel="shortcut icon" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!--
       HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     -->
@@ -30,6 +33,12 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="{{ asset('backend/assets/plugins/nprogress/nprogress.js') }}"></script>
+
+    <style>
+        .toast-success {
+            background-color: #51a351 !important;
+        }
+    </style>
 </head>
 
 <body class="sidebar-fixed sidebar-dark header-light header-fixed" id="body">
@@ -102,36 +111,6 @@
 
             <div class="content">
 
-                @if(session('success'))
-
-                    <div class="col-sm-12">
-
-                        <div class="alert alert-dismissible fade show alert-success" role="alert">
-
-                            <strong>Success!</strong> {{ session('success') }}
-
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                    </div>
-                @endif
-
-                @if(session('error'))
-
-                    <div class="col-sm-12">
-
-                        <div class="alert alert-dismissible fade show alert-danger" role="alert">
-
-                            <strong>Error!</strong> {{ session('error') }}
-
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                    </div>
-                @endif
-
                 @yield('admin')
             </div>
         </div>
@@ -174,6 +153,36 @@
 <script src="{{ asset('backend/assets/js/chart.js') }}"></script>
 <script src="{{ asset('backend/assets/js/date-range.js') }}"></script>
 <script src="{{ asset('backend/assets/js/map.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    @if(Session::has('message'))
+
+    let type = "{{ Session::get('alert-type','info') }}"
+
+    switch (type){
+        case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+
+        case 'warning':
+            toastr.warning("{{ Session::get('message') }}");
+            break;
+
+        case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+
+        case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+
+        default:
+            break;
+    }
+    @endif
+</script>
 
 </body>
 </html>
